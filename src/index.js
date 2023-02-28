@@ -25,7 +25,7 @@ export default {
 			const json = ndjson.split('\n')
 			const lokiFormat = { "streams": [{ "stream": { "job": "cloudflare-logpush-http-requests" }, "values": [] }] }
 			json.forEach(element => {
-				let date = element.EdgeStartTimestamp || new Date().getTime() * 1000000
+				const date = element.EdgeStartTimestamp || new Date().getTime() * 1000000
 				lokiFormat.streams[0].values.push([date.toString(), element])
 			})
 
