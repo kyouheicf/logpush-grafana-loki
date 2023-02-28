@@ -4,13 +4,13 @@ export default {
 		const PRESHARED_AUTH_HEADER_KEY = 'X-Logpush-Auth';
 		const PRESHARED_AUTH_HEADER_VALUE = 'mypresharedkey';
 		const psk = request.headers.get(PRESHARED_AUTH_HEADER_KEY);
-		const contentEncoding = request.headers.get('content-encoding')
 		if (psk !== PRESHARED_AUTH_HEADER_VALUE) {
 			return new Response('Sorry, you have submitted an invalid key.', {
 				status: 403,
 			});
 		}
 
+		const contentEncoding = request.headers.get('content-encoding')
 		const buf = await request.arrayBuffer();
 		const enc = new TextDecoder("utf-8");
 
